@@ -28,6 +28,7 @@ public class LoginFilter implements Filter {
 	public void doFilter(ServletRequest req, ServletResponse resp,
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest hsq = (HttpServletRequest)req;
+		//因为Filter本来设计成为多种协议服务，http协议仅仅是其中一部分
 		User u = (User)hsq.getSession().getAttribute("loginUser");
 		if(u==null) {
 			((HttpServletResponse)resp).sendRedirect(hsq.getContextPath()+"/login");
