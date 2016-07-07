@@ -28,6 +28,10 @@
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+		 <property name="maxActive" value="20"/>
+        <property name="minIdle" value="10"/>
+        <property name="maxWait" value="5000"/>
+        <property name="filters" value="stat"/>
 	</bean>
 
 	<!-- 2、mybatis的SqlSession的工厂：SqlSessionFactoryBean dataSource:引用数据源 typeAliasesPackage:指定实体类的包名，自动将实体的简单类名映射成别名 -->
@@ -52,3 +56,11 @@
 	<!-- 5、使用声明式事务 transaction-manager:引用上面定义的事务管理器驱动 -->
 	<tx:annotation-driven transaction-manager="txManager" />
 </beans>
+<!-- Ehcache整合spring配置文件 -->
+<!--  <bean id="cacheManagerFactory"  
+    class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"  
+    p:configLocation="classpath:ehcache.xml"></bean>-->  
+  
+<!-- 声明cacheManager -->  
+<!-- <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager"   
+    p:cacheManager-ref="cacheManagerFactory" ></bean>-->
